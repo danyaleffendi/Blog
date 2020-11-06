@@ -9,21 +9,21 @@ using MySql.Data.MySqlClient;
 
 namespace BlogProject.Controllers
 {
-    public class TagsDataController : ApiController
+    public class CommentDataController : ApiController
     {
         // The database context class which allows us to access our MySQL Database.
         private BlogDbContext Blog = new BlogDbContext();
 
         //This Controller Will access the article table of our blog database.
         /// <summary>
-        /// Returns a list of Tags in the system
+        /// Returns a list of Comment in the system
         /// </summary>
-        /// <example>GET api/TagsData/ListTags</example>
+        /// <example>GET api/CommentData/ListComments</example>
         /// <returns>
-        /// A list of Tags 
+        /// A list of Comments
         /// </returns>
         [HttpGet]
-        public IEnumerable<string> ListTags()
+        public IEnumerable<string> ListCommentss()
         {
             //Create an instance of a connection
             MySqlConnection Conn = Blog.AccessDatabase();
@@ -35,28 +35,28 @@ namespace BlogProject.Controllers
             MySqlCommand cmd = Conn.CreateCommand();
 
             //SQL QUERY
-            cmd.CommandText = "Select * from tags";
+            cmd.CommandText = "Select * from comments";
 
             //Gather Result Set of Query into a variable
             MySqlDataReader ResultSet = cmd.ExecuteReader();
 
             //Create an empty list of Tag names
-            List<String> Tags = new List<string> { };
+            List<String> Comments = new List<string> { };
 
             //Loop Through Each Row the Result Set
             while (ResultSet.Read())
             {
                 //Access Column information by the DB column name as an index
-                string tagname = ResultSet["tagname"] as string;
+                string comment = ResultSet["commentdesc"] as string;
                 //Add the Author Name to the List
-                Tags.Add(tagname);
+                Comments.Add(comment);
             }
 
             //Close the connection between the MySQL Database and the WebServer
             Conn.Close();
 
             //Return the final list of tags
-            return Tags;
+            return Comments;
         }
 
     }
