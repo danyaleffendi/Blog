@@ -14,13 +14,13 @@ namespace BlogProject.Controllers
         // The database context class which allows us to access our MySQL Database.
         private BlogDbContext Blog = new BlogDbContext();
 
-        //This Controller Will access the authors table of our blog database.
+        //This Controller Will access the authors table of blog database.
         /// <summary>
         /// Returns a list of Authors in the system
         /// </summary>
         /// <example>GET api/AuthorData/ListAuthors</example>
         /// <returns>
-        /// A list of authors (first names and last names)
+        /// A list of authors (first names, last names, bio)
         /// </returns>
         [HttpGet]
         public IEnumerable<string> ListAuthors()

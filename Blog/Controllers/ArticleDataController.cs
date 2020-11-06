@@ -14,7 +14,7 @@ namespace BlogProject.Controllers
         // The database context class which allows us to access our MySQL Database.
         private BlogDbContext Blog = new BlogDbContext();
 
-        //This Controller Will access the article table of our blog database.
+        //This Controller Will access the article table of blog database.
         /// <summary>
         /// Returns a list of Articles in the system
         /// </summary>
